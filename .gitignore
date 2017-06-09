@@ -1,1 +1,4 @@
 target/
+.ensime_cache/
+.ensime
+/*.log
