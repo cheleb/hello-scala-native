@@ -3,12 +3,13 @@ package example
 import scala.scalanative.unsafe._
 import scala.scalanative.libc._
 
+import sttp.client3.quick._
+
 object Main {
 
   def main(args: Array[String]): Unit = {
-
-    stdio.printf(c"hello native %s!", c"world")
-    println("👍 Hello native %s\n", "ooooo")
+    //stdio.printf(c"hello native %s!", c"world")
+    println("👍 Hello native %s\nooooo")
     val helloNative = c"Hello native"
 
     stdio.printf(
@@ -29,5 +30,7 @@ object Main {
         c
       )
     }
+    val resp = quickRequest.get(uri"http://httpbin.org/ip").send(backend)
+    println(resp.body)
   }
 }

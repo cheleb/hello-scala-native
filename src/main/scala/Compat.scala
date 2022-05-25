@@ -9,7 +9,7 @@ package object libc {
         stdio.vprintf(format, toCVarArgList(args.toSeq))
       }
 
- def sprintf(s: CString, format: CString, args: CVarArg*): CInt =
+    def sprintf(s: CString, format: CString, args: CVarArg*): CInt =
       Zone { implicit z =>
         stdio.vsprintf(s, format, toCVarArgList(args.toSeq))
       }
@@ -39,7 +39,5 @@ package object libc {
         stdio.vfscanf(f, format, toCVarArgList(args.toSeq))
       }
 
-
-
-    }
+  }
 }
