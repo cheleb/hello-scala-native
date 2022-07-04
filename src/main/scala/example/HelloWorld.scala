@@ -8,8 +8,9 @@ import sttp.client3.quick._
 object Main {
 
   def main(args: Array[String]): Unit = {
-    //stdio.printf(c"hello native %s!", c"world")
-    println("👍 Hello native %s\nooooo")
+
+    stdio.printf(c"hello native %s!", c"world")
+    println("👍 Hello native %s\n")
     val helloNative = c"Hello native"
 
     stdio.printf(

@@ -18,3 +18,5 @@ testFrameworks += new TestFramework("munit.Framework")
 //nativeGC := "immix"
 
 (Compile / run) / mainClass := Some("example.ReadLine")
+
+scalafmtOnCompile := true

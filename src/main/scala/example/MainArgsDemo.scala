@@ -1,6 +1,6 @@
 package example
 
-import mainargs._
+//import mainargs._
 
 object MainArgsDemo {
   @main
