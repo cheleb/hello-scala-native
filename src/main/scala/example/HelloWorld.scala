@@ -3,8 +3,6 @@ package example
 import scala.scalanative.unsafe._
 import scala.scalanative.libc._
 
-import sttp.client3.quick._
-
 object Main {
 
   def main(args: Array[String]): Unit = {
@@ -31,7 +29,7 @@ object Main {
         c
       )
     }
-    val resp = quickRequest.get(uri"http://httpbin.org/ip").send(backend)
-    println(resp.body)
+    // val resp = quickRequest.get(uri"http://httpbin.org/ip").send(backend)
+    // println(resp.body)
   }
 }

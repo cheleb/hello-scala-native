@@ -2,11 +2,12 @@ package basicio
 
 import scala.scalanative.unsafe._
 import scala.scalanative.libc._
+import scala.scalanative.unsafe.Size.intToSize
 
 object ParseInt:
   def main(args: Array[String]): Unit =
     println("ParseInt")
-    val line_buffer = stackalloc[Byte](1024)
+    val line_buffer = stackalloc[Byte](1024.toUSize)
     while (stdio.fgets(line_buffer, 1023, stdio.stdin) != null)
       val int = parseInt(line_buffer)
       println(s"Ohh $int")

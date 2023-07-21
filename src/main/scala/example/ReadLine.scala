@@ -2,16 +2,17 @@ package example
 
 import scala.scalanative.unsafe._
 import scala.scalanative.libc._
+import scala.scalanative.unsafe.Size.intToSize
 
 object ReadLine {
   def main(args: Array[String]): Unit = {
-    val word_out_buffer = stackalloc[Byte](32)
+    val word_out_buffer = stackalloc[Byte](32.toUSize)
     stdio.printf(
       c"Allocated %d bytes at %p",
       sizeof[CString].toInt * 32,
       word_out_buffer
     )
-    val line_in_buffer = stackalloc[Byte](1024)
+    val line_in_buffer = stackalloc[Byte](1024.toUSize)
 
     while (stdio.fgets(line_in_buffer, 1023, stdio.stdin) != null) {
       parse_line(line_in_buffer, word_out_buffer, 6)
@@ -19,7 +20,7 @@ object ReadLine {
     }
 
     def parse_line(line: CString, word_out: CString, size: Int): Unit = {
-      val tmp_buffer = stackalloc[Byte](1024)
+      val tmp_buffer = stackalloc[Byte](1024.toUSize)
       val scanfResult = stdio.sscanf(line, c"%1023s\n", tmp_buffer)
       if (scanfResult < 1)
         throw new Exception(s"Bad scanf result $scanfResult")
